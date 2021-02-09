@@ -41,6 +41,6 @@ def webhook_github():
     # process push event
     if event == 'push':
         repository = payload.get('repository', {}).get('name')
-        print(f'processing event: {event} on repository: {repository}')
+        print(f'processing event: "{event}" on repository: "{repository}"')
 
     return 'OK'
