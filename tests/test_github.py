@@ -75,6 +75,8 @@ def test_github_valid_signature(application, client, tmp_path, monkeypatch):
         'key': 'value'
     }
 
+    event = 'ping'
+    delivery = '01234567-89ab-cedf-0123-456789abcdef'
     signature = 'sha256=' + hmac.new(
         bytes(application.config.get('GITHUB_SECRET_KEY'), 'utf-8'),
         bytes(json.dumps(data), 'utf-8'),
@@ -82,11 +84,14 @@ def test_github_valid_signature(application, client, tmp_path, monkeypatch):
 
     headers = {
         'Content-Type': 'application/json',
-        'X-GitHub-Event': 'ping',
-        'X-GitHub-Delivery': '01234567-89ab-cedf-0123-456789abcdef',
+        'X-GitHub-Event': event,
+        'X-GitHub-Delivery': delivery,
         'X-Hub-Signature-256': signature
     }
 
     response = client.post('/github', headers=headers, data=json.dumps(data))
 
     assert response.status_code == 200
+
+    file = directory / str(event + '.' + delivery)
+    assert file.read_text() == json.dumps(data)
