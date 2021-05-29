@@ -1,6 +1,7 @@
 import os
 
 import pytest
+
 from application import create_application
 
 
