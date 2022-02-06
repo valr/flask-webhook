@@ -7,4 +7,4 @@ The payload of events is first validated and then stored in a defined location.
 
 # License
 
-[MIT](LICENSE)
+[GNU GPLv3](LICENSE)
