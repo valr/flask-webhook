@@ -1,5 +1,5 @@
 import os
 
-from application import create_application
+from flask_webhook import create_application
 
 application = create_application(os.environ.get("INSTANCE_PATH"))

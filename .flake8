@@ -1,7 +1,8 @@
 [flake8]
 ignore = D1,W503,E203
 exclude =
+    __pycache__
     .git
     .pytest_cache
     .venv
-    __pycache__
+    .vscode

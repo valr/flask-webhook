@@ -2,7 +2,7 @@ import os
 
 import pytest
 
-from application import create_application
+from flask_webhook import create_application
 
 
 @pytest.fixture
