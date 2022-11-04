@@ -48,3 +48,11 @@ upgrade-requirements:
   source .venv/bin/activate
   pip-compile --quiet --upgrade requirements.in
   pip-compile --quiet --upgrade dev-requirements.in
+
+# run the flask application in the development server
+run-application:
+  #!/usr/bin/env bash
+  set -euo pipefail
+  [ ! -d .venv ] && { echo "error: the virtual environment .venv doesn't exist"; false; }
+  source .venv/bin/activate
+  flask --debug run

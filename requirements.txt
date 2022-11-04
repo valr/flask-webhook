@@ -16,7 +16,5 @@ markupsafe==2.1.1
     # via
     #   jinja2
     #   werkzeug
-python-dotenv==0.21.0
-    # via -r requirements.in
 werkzeug==2.2.2
     # via flask
