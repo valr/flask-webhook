@@ -1,5 +1,6 @@
 [flake8]
 ignore = D1,W503,E203
+max-line-length = 88
 exclude =
     __pycache__
     .git

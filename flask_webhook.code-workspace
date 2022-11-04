@@ -9,9 +9,6 @@
             "**/__pycache__": true,
             "**/.pytest_cache": true,
             "**/.venv": true
-        },
-        "python.linting.flake8Args": [
-            "--max-line-length=88"
-        ]
+        }
     }
 }
