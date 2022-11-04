@@ -1,3 +1,6 @@
+# use default or current directory for temporary directories/files
+# set tempdir := "."
+
 # list the recipes
 default:
   @just --justfile {{justfile()}} --list --list-heading '' --unsorted
