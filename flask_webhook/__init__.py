@@ -9,7 +9,7 @@ def create_application(instance_path):
     else:
         application = Flask(__name__, instance_relative_config=True)
 
-    application.config.from_pyfile("default.conf")
+    application.config.from_pyfile("flask-webhook.conf")
 
     from .github import blueprint as github_blueprint
 
