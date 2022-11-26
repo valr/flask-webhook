@@ -12,7 +12,6 @@ def create_application(instance_path, config_file='flask-webhook.conf'):
     application.config.from_pyfile(config_file)
 
     from .github import blueprint as github_blueprint
-
     application.register_blueprint(github_blueprint, url_prefix="")
 
     return application
