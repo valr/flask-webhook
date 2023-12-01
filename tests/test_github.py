@@ -1,9 +1,16 @@
 import hashlib
 import hmac
 import json
+from pathlib import Path
+
+from flask import Flask
+from flask.testing import FlaskClient
+from pytest import MonkeyPatch
 
 
-def test_github_incorrect_configuration(application, client, monkeypatch):
+def test_github_incorrect_configuration(
+    application: Flask, client: FlaskClient, monkeypatch: MonkeyPatch
+):
     data = {"key": "value"}
     headers = {"Content-Type": "application/json"}
 
@@ -21,7 +28,7 @@ def test_github_incorrect_configuration(application, client, monkeypatch):
     assert response.status_code == 503
 
 
-def test_github_missing_or_invalid_signature(client):
+def test_github_missing_or_invalid_signature(client: FlaskClient):
     data = {"key": "value"}
     headers = {"Content-Type": "application/json"}
 
@@ -38,7 +45,7 @@ def test_github_missing_or_invalid_signature(client):
     assert b"Missing" in response.data
 
 
-def test_github_invalid_signature(client):
+def test_github_invalid_signature(client: FlaskClient):
     data = {"key": "value"}
     headers = {
         "Content-Type": "application/json",
@@ -51,7 +58,9 @@ def test_github_invalid_signature(client):
     assert b"Missing" not in response.data
 
 
-def test_github_valid_signature(application, client, tmp_path, monkeypatch):
+def test_github_valid_signature(
+    application: Flask, client: FlaskClient, tmp_path: Path, monkeypatch: MonkeyPatch
+):
     directory = tmp_path / "github"
     directory.mkdir()
 

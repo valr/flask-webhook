@@ -1,6 +1,7 @@
 import os
 
 import pytest
+from flask import Flask
 
 from flask_webhook import create_application
 
@@ -14,5 +15,5 @@ def application():
 
 
 @pytest.fixture
-def client(application):
+def client(application: Flask):
     return application.test_client()
